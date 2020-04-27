@@ -102,3 +102,30 @@ dist
 
 # TernJS port file
 .tern-port
+
+# OS
+.DS_Store
+._*
+Thumbs.db
+
+# Project
+.idea
+.vscode/
+.netlify/
+*.sublime*
+build/
+dist/
+public/
+
+# NodeJS
+node_modules/
+package-lock.json
+
+# Other
+*.ai
+*.log
+*.pdf
+*.psd
+
+# Other Projects
+english-for-kids/

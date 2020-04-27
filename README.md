@@ -1,2 +1,2 @@
-# svensktutby-RS2020Q1
-Private repository for @svensktutby
+**[MovieSearch](https://github.com/rolling-scopes-school/tasks/blob/master/tasks/movie-search.md)** - одностраничное приложение, отображающее информацию о фильмах по запросу пользователя.
+Для получения информации используется OMDb RESTful API.
