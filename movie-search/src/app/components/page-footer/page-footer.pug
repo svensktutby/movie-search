@@ -1,0 +1,22 @@
+// - All mixins in this file should initiate with the name of the block (page-footer)
+
+mixin page-footer(mods)
+
+  //- Accept:
+  //-   mods  {string} - modifiers list
+  //- Invoke:
+        +page-footer()
+          p Footer
+  -
+    // modifiers list
+    let allMods = '';
+    if(typeof(mods) !== 'undefined' && mods) {
+      const modsList = mods.split(',');
+      for (let i = 0; i < modsList.length; i++) {
+        allMods = allMods + ' page-footer--' + modsList[i].trim();
+      }
+    }
+
+  footer.page-footer(class=allMods)&attributes(attributes)
+    .page-footer__inner
+      block

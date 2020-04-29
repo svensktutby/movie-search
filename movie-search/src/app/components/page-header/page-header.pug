@@ -1,0 +1,22 @@
+// - All mixins in this file should initiate with the name of the block (page-header)
+
+mixin page-header(mods)
+
+  //- Accept:
+  //-   mods  {string} - modifiers list
+  //- Invoke:
+        +page-header()
+          p Header
+  -
+    // modifiers list
+    let allMods = '';
+    if(typeof(mods) !== 'undefined' && mods) {
+      const modsList = mods.split(',');
+      for (let i = 0; i < modsList.length; i++) {
+        allMods = allMods + ' page-page-header--' + modsList[i].trim();
+      }
+    }
+
+  header.page-header(class=allMods)&attributes(attributes)
+    .page-header__inner
+      block

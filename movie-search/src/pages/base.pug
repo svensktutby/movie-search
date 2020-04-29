@@ -1,0 +1,26 @@
+include ../app/components/page-header/page-header.pug
+include ../app/components/page-footer/page-footer.pug
+
+doctype html
+html.page(lang='en')
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    meta(http-equiv='X-UA-Compatible', content='ie=edge')
+    title
+      block title
+  body
+    noscript You need to enable JavaScript to run this app.
+    .page__inner
+      .page__content
+        +page-header()
+          block header
+            p Header
+
+        block content
+          p Content
+
+      .page__footer-wrapper
+        +page-footer()
+          block footer
+            p Footer
