@@ -3,5 +3,8 @@
 @import "base/fonts";
 @import "base/base";
 
+@import "animations";
+
+
 // stylelint-disable-next-line
 @import "../app/components/**/*.scss";

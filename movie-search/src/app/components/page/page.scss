@@ -1,0 +1,31 @@
+.page {
+  min-width: 320px;
+  min-height: 100%;
+
+  &__inner {
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  &__content {
+    flex-grow: 1;
+    max-width: 100%;
+  }
+
+  &__footer-wrapper {
+    flex-shrink: 0;
+  }
+}
+
+/* Bootstrap correcting
+******************************/
+.page {
+  @media (min-width: 1500px) {
+    .container {
+      max-width: 1440px;
+    }
+  }
+}

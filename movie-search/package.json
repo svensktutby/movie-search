@@ -17,7 +17,7 @@
     "url": "git+https://github.com/rolling-scopes-school/svensktutby-RS2020Q1/tree/movie-search"
   },
   "scripts": {
-    "start": "webpack-dev-server --hot",
+    "start": "webpack-dev-server",
     "build": "NODE_ENV=production webpack --progress",
     "serve": "static dist",
     "lint": "eslint . --cache",

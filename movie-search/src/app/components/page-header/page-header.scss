@@ -1,1 +1,58 @@
-//.page-header {}
+.page-header {
+  padding: 20px 0;
+
+  background-color: $gray-darkest;
+  background-image: $gray-gradient;
+
+  @media (max-width: $screen-md) {
+    padding: 15px 0;
+  }
+
+  &__title {
+    margin: 0;
+
+    font-size: px-rem(60px);
+    line-height: 1;
+    text-align: center;
+    color: rgba(45, 45, 45, 1);
+    text-transform: uppercase;
+    letter-spacing: 5px;
+
+    @media (max-width: $screen-md) {
+      font-size: px-rem(50px);
+    }
+
+    @media (max-width: $screen-sm) {
+      font-size: px-rem(40px);
+      letter-spacing: 4px;
+    }
+
+    @media (max-width: $screen-sm) {
+      font-size: px-rem(35px);
+      letter-spacing: 3px;
+    }
+  }
+
+  &__title-inner {
+    position: relative;
+
+    display: inline-block;
+
+    vertical-align: middle;
+
+    &::before {
+      content: attr(data-heading);
+      position: absolute;
+      z-index: 5;
+      left: 31.5%;
+
+      overflow: hidden;
+
+      text-align: left;
+      color: $yellow;
+      text-shadow: none;
+
+      animation: flicker 3s linear infinite;
+    }
+  }
+}
