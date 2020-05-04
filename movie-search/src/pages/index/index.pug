@@ -1,11 +1,22 @@
 extends ../base
+include ../../app/components/page-header/page-header.pug
+include ../../app/components/page-footer/page-footer.pug
+include ../../app/components/social/social.pug
+include ../../app/components/icon/icon.pug
+
 block title
   | MovieSearch
 
+block head
+
+block svg-sprite
+  div#svg-sprite(style='display: none;')
+
 block header
-  .container
-    h1.page-header__title
-      span.page-header__title-inner(data-heading='i') MovieSearch
+  +page-header()
+    .container
+      h1.page-header__title
+        span.page-header__title-inner(data-first='m' data-second='s') MovieSearch
 
 block content
   main.page-main
@@ -13,5 +24,10 @@ block content
       p Content
 
 block footer
-  .container
-    p Footer
+  +page-footer()
+    .container
+      .row
+        p.page-footer__info.col.col--lg-6 RS School 2020q1
+        +social('footer page-footer__social col col--lg-6')
+          +social-link('https://github.com/svensktutby/', 'gh', 'svensktutby')
+            +icon('assets/img/sprite.svg', 'sprite-github-logo', '24', '24', 'gh social__icon')

@@ -1,1 +1,30 @@
-//.page-footer {}
+.page-footer {
+  $block-name: &; // #{$block-name}__
+
+  padding: 10px 0;
+
+  background-color: $gray-darkest;
+  background-image: $gray-gradient;
+
+  &__info,
+  &__social {
+    font-size: inherit;
+    color: $white;
+
+    @media (max-width: $screen-sm) {
+      font-size: px-rem(15px);
+    }
+  }
+
+  &__info {
+    margin-bottom: 0;
+  }
+
+  &__social {
+    justify-content: flex-end;
+  }
+
+  .row {
+    align-items: center;
+  }
+}

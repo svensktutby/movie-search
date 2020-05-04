@@ -1,4 +1,6 @@
 .page {
+  $block-name: &; // #{$block-name}__
+
   min-width: 320px;
   min-height: 100%;
 
@@ -17,15 +19,5 @@
 
   &__footer-wrapper {
     flex-shrink: 0;
-  }
-}
-
-/* Bootstrap correcting
-******************************/
-.page {
-  @media (min-width: 1500px) {
-    .container {
-      max-width: 1440px;
-    }
   }
 }

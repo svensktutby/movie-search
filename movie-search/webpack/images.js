@@ -5,6 +5,7 @@ module.exports = function () {
       rules: [
         {
           test: /\.(gif|png|jpe?g|svg)$/i,
+          exclude: /(\/icons)/,
           use: [
             {
               loader: 'file-loader',

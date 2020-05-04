@@ -1,0 +1,86 @@
+$socials: gh;
+$social-colors: (
+  "fb": #4267b2,
+  "tw": #40a2f5,
+  "gh": #24292e,
+  "in": #c33cbe,
+  "vk": #4a76a8,
+  "ok": #e27d23,
+);
+
+.social {
+  $block-name: &; // #{$block-name}__
+
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: 0;
+
+  list-style: none;
+
+  &__item {
+    margin-right: 10px;
+
+    #{$block-name}--footer & {
+      margin-right: 0;
+    }
+  }
+
+  &__link {
+    display: block;
+    padding: 5px;
+
+    color: inherit;
+    text-decoration: none;
+
+    background-color: transparent;
+
+    #{$block-name}--footer & {
+      display: flex;
+      flex-direction: row-reverse;
+      align-items: center;
+    }
+
+    @each $item in $socials {
+      $color: map-get($social-colors, $item);
+
+      #{$block-name}__item--#{$item} & {
+        // stylelint-disable-next-line scss/at-extend-no-missing-placeholder
+        //@extend .icon--#{$item};
+        //background-color: $color;
+      }
+    }
+
+    svg {
+      display: block;
+      width: 24px;
+      height: 24px;
+
+      fill: #fff;
+    }
+
+    &:focus {
+      outline: none;
+    }
+
+    @media (hover: hover) {
+      &:hover,
+      &:focus {
+        #{$block-name}__icon {
+          animation-name: icon-pulse;
+          animation-duration: 1s;
+          animation-timing-function: linear;
+          animation-iteration-count: infinite;
+        }
+      }
+    }
+  }
+
+  &__text {
+    //@include visually-hidden;
+  }
+
+  &__icon {
+    margin-right: 10px;
+  }
+}

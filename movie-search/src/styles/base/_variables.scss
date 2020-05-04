@@ -68,10 +68,11 @@ $container-xxl:               $screen-xxl - 30;
 $retina-dpi:                  144dpi;
 $retina-dppx:                 1.5dppx;
 
-/* Grid layout
+/* Grid layouts
 ******************************/
 $grid-columns:                12;
 $grid-gutter-width:           30px;
+$grid-gutter-width-sm:        10px;
 
 /* Other
 ******************************/

@@ -1,4 +1,4 @@
-// import './plugins';
+import './plugins';
 import '../styles/main.scss';
 import movies from './store';
 

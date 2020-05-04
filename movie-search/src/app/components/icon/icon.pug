@@ -1,0 +1,30 @@
+//- All mixins in this file should initiate with the name of the block (icon)
+
+mixin icon(link, id, width, height, mods)
+
+  //- Accept:
+  //-   link  {string} - link
+  //-   id  {string} - id
+  //-   width  {string} - width
+  //-   height  {string} - height
+  //-   mods  {string} - modifiers list
+  //- Invoke:
+        +icon('assets/img/_sprite.svg', 'fb')
+
+  -
+    // modifiers list
+    let allMods = '';
+    if(typeof(mods) !== 'undefined' && mods) {
+      const modsList = mods.split(',');
+      for (let i = 0; i < modsList.length; i++) {
+        allMods = allMods + ' icon--' + modsList[i].trim();
+      }
+    }
+
+  svg.icon(class=allMods,
+    width=width,
+    height=height,
+    aria-hidden="true",
+    focusable="false")&attributes(attributes)
+    use(xlink:href=`${link}#${id}`)
+    block

@@ -1,6 +1,3 @@
-include ../app/components/page-header/page-header.pug
-include ../app/components/page-footer/page-footer.pug
-
 doctype html
 html.page(lang='en')
   head
@@ -9,18 +6,21 @@ html.page(lang='en')
     meta(http-equiv='X-UA-Compatible', content='ie=edge')
     title
       block title
+
+    block head
+
   body
     noscript You need to enable JavaScript to run this app.
+    block svg-sprite
+
     .page__inner
       .page__content
-        +page-header()
-          block header
-            p Header
+        block header
+          p Header
 
         block content
           p Content
 
       .page__footer-wrapper
-        +page-footer()
-          block footer
-            p Footer
+        block footer
+          p Footer

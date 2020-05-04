@@ -23,3 +23,13 @@
     text-shadow: none;
   }
 }
+
+@keyframes icon-pulse {
+  25% {
+    transform: scale(1.2);
+  }
+
+  75% {
+    transform: scale(0.9);
+  }
+}

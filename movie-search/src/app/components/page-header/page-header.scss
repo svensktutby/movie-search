@@ -1,4 +1,6 @@
 .page-header {
+  $block-name: &; // #{$block-name}__
+
   padding: 20px 0;
 
   background-color: $gray-darkest;
@@ -6,6 +8,10 @@
 
   @media (max-width: $screen-md) {
     padding: 15px 0;
+  }
+
+  @media (max-width: $screen-sm) {
+    padding: 10px 0;
   }
 
   &__title {
@@ -17,6 +23,7 @@
     color: rgba(45, 45, 45, 1);
     text-transform: uppercase;
     letter-spacing: 5px;
+    text-shadow: -1px 0 $yellow, 0 1px $yellow, 1px 0 $yellow, 0 -1px $yellow;
 
     @media (max-width: $screen-md) {
       font-size: px-rem(50px);
@@ -27,9 +34,8 @@
       letter-spacing: 4px;
     }
 
-    @media (max-width: $screen-sm) {
+    @media (max-width: $screen-xs) {
       font-size: px-rem(35px);
-      letter-spacing: 3px;
     }
   }
 
@@ -40,11 +46,12 @@
 
     vertical-align: middle;
 
-    &::before {
-      content: attr(data-heading);
+    &::before,
+    &::after {
+      content: attr(data-first);
       position: absolute;
       z-index: 5;
-      left: 31.5%;
+      left: 0;
 
       overflow: hidden;
 
@@ -52,7 +59,23 @@
       color: $yellow;
       text-shadow: none;
 
-      animation: flicker 3s linear infinite;
+      animation-name: flicker;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
+    }
+
+    &::before {
+      content: attr(data-first);
+      left: 0;
+
+      animation-duration: 4s;
+    }
+
+    &::after {
+      content: attr(data-second);
+      left: 44.5%;
+
+      animation-duration: 3s;
     }
   }
 }
