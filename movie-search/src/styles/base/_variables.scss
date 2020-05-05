@@ -59,20 +59,25 @@ $screen-lg:                   992px;
 $screen-xl:                   1200px;
 $screen-xxl:                  1800px;
 
+$container-xs:                100%;
 $container-sm:                100%;
 $container-md:                100%;
-$container-lg:                $screen-lg - 30;
-$container-xl:                $screen-xl - 30;
-$container-xxl:               $screen-xxl - 30;
-
-$retina-dpi:                  144dpi;
-$retina-dppx:                 1.5dppx;
+$container-lg:                $screen-lg - 100;
+$container-xl:                $screen-xl - 100;
+$container-xxl:               $screen-xxl - 200;
 
 /* Grid layouts
 ******************************/
 $grid-columns:                12;
 $grid-gutter-width:           30px;
 $grid-gutter-width-sm:        10px;
+
+$container-indent-xs:         $grid-gutter-width-sm / 2;
+$container-indent-sm:         $grid-gutter-width-sm / 2;
+$container-indent-md:         $grid-gutter-width / 2;
+$container-indent-lg:         $grid-gutter-width / 2;
+$container-indent-xl:         $grid-gutter-width / 2;
+$container-indent-xxl:        $grid-gutter-width / 2;
 
 /* Other
 ******************************/
@@ -91,4 +96,7 @@ $toggle-part-bg-color:        $gray-lighter;
 $toggle-part-hover-color:     $gray-dark;
 
 $z-index-modal:               100;
+
+$retina-dpi:                  144dpi;
+$retina-dppx:                 1.5dppx;
 // stylelint-enable

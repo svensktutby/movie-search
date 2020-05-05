@@ -25,6 +25,8 @@
     letter-spacing: 5px;
     text-shadow: -1px 0 $yellow, 0 1px $yellow, 1px 0 $yellow, 0 -1px $yellow;
 
+    cursor: default;
+
     @media (max-width: $screen-md) {
       font-size: px-rem(50px);
     }

@@ -1,0 +1,36 @@
+//- All mixins in this file should initiate with the name of the block (btn)
+
+mixin btn(text, mods, isInput)
+
+  //- Accept:
+  //-   text    {string} - button's text
+  //-   mods    {string} - modifiers list
+  //-   isInput {bool}   - flag «this is an input tag»
+  //- Invoke:
+        +btn('Button-link')(href='/')  - has href, this is exactly a link
+        +btn('Button-input', '', true)   - has flag isInput, this is an input
+        +btn('Button-button', 'success') - no href, no isInput — this is a button
+
+  -
+    // modifiers list
+    let allMods = '';
+    if(typeof(mods) !== 'undefined' && mods) {
+      const modsList = mods.split(',');
+      for (let i = 0; i < modsList.length; i++) {
+        allMods = allMods + ' btn--' + modsList[i].trim();
+      }
+    }
+
+  //- has href — this is a link
+  if (attributes.href)
+    a.btn(class=allMods)&attributes(attributes)!= text
+      block
+
+  //- otherwise, if has isInput and it is true, this is an input
+  else if (typeof(isInput) !== 'undefined' && isInput)
+    input.btn(class=allMods, value=text, type='button')&attributes(attributes)
+
+  //- otherwise this is button
+  else
+    button.btn(class=allMods)&attributes(attributes)!= text
+      block

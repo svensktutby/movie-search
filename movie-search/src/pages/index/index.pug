@@ -3,6 +3,7 @@ include ../../app/components/page-header/page-header.pug
 include ../../app/components/page-footer/page-footer.pug
 include ../../app/components/social/social.pug
 include ../../app/components/icon/icon.pug
+include ../../app/components/preloader/preloader.pug
 
 block title
   | MovieSearch
@@ -21,6 +22,7 @@ block header
 block content
   main.page-main
     .container
+      +preloader('page-main')
       include ../../app/components/swiper/swiper.pug
 
 block footer

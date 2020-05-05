@@ -1,10 +1,11 @@
 import './plugins';
 import '../styles/main.scss';
-import swiper from './components/swiper';
-// import App from './components/App';
+// import Card from './components/Card';
 
-document.addEventListener('DOMContentLoaded', (evt) => {
-  // const app = new App();
+const MOVIE_API_URL = 'http://www.omdbapi.com/?i=tt3896198&apikey=8618d2a5';
+
+document.addEventListener('DOMContentLoaded', () => {
+  // const app = new Card();
 
   // app.start();
 });

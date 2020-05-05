@@ -19,3 +19,25 @@
 
   background-color: transparent;
 }
+
+.swiper-button-next,
+.swiper-button-prev {
+  &:focus {
+    outline: none;
+  }
+
+  @media (hover: hover) {
+    &:hover,
+    &:focus {
+      animation-name: icon-pulse;
+      animation-duration: 1s;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
+    }
+  }
+}
+
+.swiper-pagination-bullet {
+  width: 12px;
+  height: 12px;
+}

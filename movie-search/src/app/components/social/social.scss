@@ -67,10 +67,16 @@ $social-colors: (
       &:hover,
       &:focus {
         #{$block-name}__icon {
-          animation-name: icon-pulse;
-          animation-duration: 1s;
-          animation-timing-function: linear;
+          transform: translateY(-6px);
+
+          animation-name: icon-bob;
+          animation-duration: $transition-time * 2;
+          animation-timing-function: ease-in-out;
+          animation-delay: $transition-time;
           animation-iteration-count: infinite;
+          animation-direction: alternate;
+
+          animation-fill-mode: forwards;
         }
       }
     }
@@ -82,5 +88,7 @@ $social-colors: (
 
   &__icon {
     margin-right: 10px;
+
+    transition: transform $transition-time * 2;
   }
 }

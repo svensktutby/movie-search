@@ -33,3 +33,13 @@
     transform: scale(0.9);
   }
 }
+
+@keyframes icon-bob {
+  from {
+    transform: translateY(-6px);
+  }
+
+  to {
+    transform: translateY(-2px);
+  }
+}

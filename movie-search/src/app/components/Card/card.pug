@@ -1,0 +1,7 @@
+h2.card__title
+  a.card__link(href=item.link, target='_blank')= item.title
+.card__img-wrapper
+  img.card__img(src=item.src, width='200', alt=`The movie titled: ${item.title}`)
+.card__footer
+  .card__year= item.year
+  .card__rating= item.rating

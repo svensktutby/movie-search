@@ -1,12 +1,12 @@
 //- All mixins in this file should initiate with the name of the block (swiper)
-- let n = 1;
+
 //- Slider main container
 .swiper-container
   //- Additional required wrapper
   .swiper-wrapper
     //- Slides
-    while n <= 10
-      .swiper-slide= `Slide ${n++}`
+    - for (let i = 1; i <= 10; i++)
+      .swiper-slide= `Slide ${i}`
   //- Add Arrows
   .swiper-button-prev
   .swiper-button-next
