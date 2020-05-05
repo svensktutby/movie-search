@@ -83,7 +83,7 @@ const webpackConfig = merge(
 
   webpackConfig.plugins.push(
     new HtmlWebpackPlugin({
-      favicon: './favicon.ico',
+      favicon: './assets/favicon.ico',
       filename: `${file}.html`,
       template: `./pages/${file}/${file}.pug`,
       // chunks: [file.replace(/-(\w)/g, (match, c) => c.toUpperCase()), 'common'],

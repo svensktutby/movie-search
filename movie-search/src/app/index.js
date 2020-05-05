@@ -1,8 +1,10 @@
 import './plugins';
 import '../styles/main.scss';
-import movies from './store';
+import swiper from './components/swiper';
+// import App from './components/App';
 
 document.addEventListener('DOMContentLoaded', (evt) => {
-  console.log(movies);
-  // initApp();
+  // const app = new App();
+
+  // app.start();
 });

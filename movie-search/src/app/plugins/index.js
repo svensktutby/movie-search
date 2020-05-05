@@ -1,2 +1,2 @@
-// import './bootstrap';
+import './swiper';
 import './svg-sprite';

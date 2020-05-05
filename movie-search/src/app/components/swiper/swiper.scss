@@ -1,0 +1,21 @@
+:root {
+  --swiper-theme-color: #fc0;
+  --swiper-navigation-size: 44px;
+}
+
+.swiper-container {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100px;
+
+  font-size: inherit;
+  text-align: center;
+
+  background-color: transparent;
+}
