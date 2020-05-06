@@ -6,7 +6,7 @@
   background-color: $gray-darkest;
   background-image: $gray-gradient;
 
-  &__info,
+  &__link,
   &__social {
     font-size: inherit;
     color: $white;
@@ -16,8 +16,21 @@
     }
   }
 
-  &__info {
-    margin-bottom: 0;
+  &__link {
+    text-decoration: none;
+
+    transition: color $transition-time;
+
+    &:focus {
+      outline: none;
+    }
+
+    @media (hover: hover) {
+      &:hover,
+      &:focus {
+        color: $yellow;
+      }
+    }
   }
 
   &__social {

@@ -1,11 +1,15 @@
 import './plugins';
 import '../styles/main.scss';
-// import Card from './components/Card';
-
-const MOVIE_API_URL = 'http://www.omdbapi.com/?i=tt3896198&apikey=8618d2a5';
+import dataStore from './store/data-store';
+import { appendSlide } from './plugins/swiper';
+import Card from './components/card';
 
 document.addEventListener('DOMContentLoaded', () => {
-  // const app = new Card();
-
-  // app.start();
+  // init app
+  (async () => {
+    await dataStore.init('sunny');
+    const moviesData = dataStore.movies.Search;
+    const moviesNodeList = moviesData.map((item) => new Card(item).template);
+    appendSlide(moviesNodeList);
+  })();
 });

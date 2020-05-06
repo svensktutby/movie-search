@@ -67,6 +67,7 @@ $social-colors: (
       &:hover,
       &:focus {
         #{$block-name}__icon {
+          fill: $yellow;
           transform: translateY(-6px);
 
           animation-name: icon-bob;
@@ -78,17 +79,22 @@ $social-colors: (
 
           animation-fill-mode: forwards;
         }
+
+        #{$block-name}__text {
+          color: $yellow;
+        }
       }
     }
   }
 
   &__text {
     //@include visually-hidden;
+    transition: color $transition-time;
   }
 
   &__icon {
     margin-right: 10px;
 
-    transition: transform $transition-time * 2;
+    transition: transform $transition-time * 2, fill $transition-time;
   }
 }

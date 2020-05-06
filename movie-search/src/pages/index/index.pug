@@ -29,7 +29,8 @@ block footer
   +page-footer()
     .container
       .row
-        p.page-footer__info.col.col--lg-6 RS School 2020q1
+        .page-footer__info.col.col--lg-6
+          a.page-footer__link(href='https://rs.school/', target='_blank') RS School 2020q1
         +social('footer page-footer__social col col--lg-6')
           +social-link('https://github.com/svensktutby/', 'gh', 'svensktutby')
             +icon('assets/img/sprite.svg', 'sprite-github-logo', '24', '24', 'gh social__icon')

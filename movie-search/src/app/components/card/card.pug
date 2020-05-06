@@ -1,0 +1,18 @@
+-
+  let title = Title;
+  let year = Year;
+  let rating = imdbID;
+  let link = `https://www.imdb.com/title/${imdbID}/videogallery/`;
+  let imgSrc = Poster;
+  if(Poster === 'N/A') {
+    imgSrc = require('../../../assets/img/noposter.jpg')
+  }
+
+.card.swiper-slide
+  h2.card__title
+    a.card__link(href=link, target='_blank')= title
+  .card__img-wrapper
+    img.card__img(src=imgSrc, width='300', alt=`The movie titled: ${title}`)
+  .card__footer
+    .card__year= year
+    .card__rating= rating

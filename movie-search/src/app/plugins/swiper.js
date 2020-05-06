@@ -1,10 +1,10 @@
 import 'swiper/css/swiper.css';
 import Swiper from 'swiper';
 
-export default new Swiper('.swiper-container', {
+const swiper = new Swiper('.swiper-container', {
   slidesPerView: 1,
   spaceBetween: 30,
-  loop: true,
+  // loop: true,
   mousewheel: true,
   keyboard: true,
   grabCursor: true,
@@ -36,3 +36,11 @@ export default new Swiper('.swiper-container', {
     },
   },
 });
+
+export function appendSlide(slides) {
+  return swiper.appendSlide(slides);
+}
+
+export function addSlide(index, slides) {
+  return swiper.addSlide(index, slides);
+}
