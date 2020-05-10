@@ -1,4 +1,5 @@
 //- All mixins in this file should initiate with the name of the block (social)
+//- ATTENTION: there are two mixins in the file
 
 mixin social(mods)
 
@@ -14,7 +15,7 @@ mixin social(mods)
     // modifiers list
     let allMods = '';
     if(typeof(mods) !== 'undefined' && mods) {
-      const modsList = mods.split(',');
+      let modsList = mods.split(',');
       for (let i = 0; i < modsList.length; i++) {
         allMods = allMods + ' social--' + modsList[i].trim();
       }
@@ -36,7 +37,7 @@ mixin social-link(link, mods, title)
     // modifiers list
     let allMods = '';
     if(typeof(mods) !== 'undefined' && mods) {
-      const modsList = mods.split(',');
+      let modsList = mods.split(',');
       for (let i = 0; i < modsList.length; i++) {
         allMods = allMods + ' social__item--' + modsList[i].trim();
       }

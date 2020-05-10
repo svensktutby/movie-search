@@ -1,0 +1,212 @@
+.form-wrapper {
+  padding: 15px 5%;
+}
+
+.form {
+  $block-name: &; // #{$block-name}__element
+
+  &__fieldset {
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+
+    border: 0;
+
+    &:not(:last-child) {
+      margin-bottom: $typo-margin-vertical;
+    }
+  }
+
+  &__legend {
+    display: block;
+    width: 100%;
+    max-width: 100%; // For IE
+    margin-top: 0;
+    margin-bottom: $typo-margin-vertical;
+
+    font-weight: 700;
+    font-size: $font-size;
+    line-height: $line-height;
+    font-family: $font-family;
+    color: currentColor;
+    white-space: normal; // For IE
+  }
+
+  &--search {
+    #{$block-name}__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      @media (max-width: $screen-sm) {
+        display: block;
+      }
+    }
+
+    #{$block-name}__fieldset {
+      &--input {
+        position: relative;
+
+        flex-grow: 1;
+        // stylelint-disable-next-line
+        @media (min-width: $screen-sm) {
+          margin-bottom: 0;
+        }
+      }
+
+      &--submit {
+        // stylelint-disable-next-line
+        @media (min-width: $screen-sm) {
+          margin-left: 10px;
+        }
+      }
+    }
+
+    .field-text {
+      margin-bottom: 0;
+    }
+
+    .field-text__input-wrap {
+      position: relative;
+
+      &::before {
+        @include pseudo();
+
+        top: 50%;
+        left: 5px;
+
+        width: 32px;
+        height: 32px;
+
+        color: $text-color;
+
+        background-image: url("data:image/svg+xml,%3Csvg version='1.1' xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Ctitle%3Esearch%3C/title%3E%3Cpath d='M31.008 27.231l-7.58-6.447c-0.784-0.705-1.622-1.029-2.299-0.998 1.789-2.096 2.87-4.815 2.87-7.787 0-6.627-5.373-12-12-12s-12 5.373-12 12 5.373 12 12 12c2.972 0 5.691-1.081 7.787-2.87-0.031 0.677 0.293 1.515 0.998 2.299l6.447 7.58c1.104 1.226 2.907 1.33 4.007 0.23s0.997-2.903-0.23-4.007zM12 20c-4.418 0-8-3.582-8-8s3.582-8 8-8 8 3.582 8 8-3.582 8-8 8z' fill='%231a1a1a'%3E%3C/path%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: 50% 50%;
+        background-size: 20px 20px;
+        transform: translateY(-50%);
+        opacity: $opacity;
+      }
+    }
+
+    .field-text__input {
+      padding-right: 40px;
+      padding-left: 40px;
+
+      transition-duration: $transition-time;
+      transition-property: border-color, box-shadow;
+    }
+
+    .field-text__input:focus {
+      border-color: $yellow;
+      box-shadow: 0 0 0 2px $yellow;
+    }
+
+    .btn {
+      &--clear,
+      &--keyboard {
+        @include flex-center;
+
+        padding: 0;
+
+        background-color: transparent;
+        border: 0;
+        opacity: $opacity;
+
+        transition: opacity $transition-time;
+
+        @media (hover: hover) {
+          // stylelint-disable-next-line
+          &:hover,
+          &:focus {
+            box-shadow: none;
+            opacity: 1;
+          }
+        }
+      }
+
+      &--clear {
+        position: absolute;
+        top: 50%;
+        right: 5px;
+
+        transform: translateY(-50%);
+      }
+
+      &--keyboard {
+        margin-left: 10px;
+        // stylelint-disable-next-line
+        @media (max-width: $screen-md) {
+          display: none;
+        }
+      }
+
+      &--submit {
+        position: relative;
+
+        padding-top: 6px;
+        padding-bottom: 6px;
+        overflow: hidden;
+
+        color: inherit;
+        text-decoration: none;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+
+        background-color: $gray-darkest;
+        transform: perspective(1px) translateZ(0);
+
+        transition-duration: $transition-time;
+        transition-property: color, background-color;
+
+        // stylelint-disable-next-line
+        &::before {
+          content: "";
+          position: absolute;
+          z-index: -1;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+
+          background-color: $yellow;
+          transform: scaleY(1);
+          transform-origin: 50%;
+
+          transition-timing-function: ease-out;
+          transition-duration: $transition-time;
+          transition-property: transform;
+        }
+
+        @media (hover: hover) {
+          // stylelint-disable-next-line
+          &:hover,
+          &:focus {
+            color: $yellow;
+            // stylelint-disable-next-line
+            &::before {
+              transform: scaleY(0);
+            }
+          }
+        }
+
+        // stylelint-disable-next-line
+        @media (max-width: $screen-sm) {
+          width: 100%;
+        }
+      }
+    }
+
+    .icon {
+      &--cross {
+        width: 20px;
+        height: 20px;
+      }
+
+      &--keyboard {
+        width: 56px;
+        height: 50px;
+      }
+    }
+  }
+}

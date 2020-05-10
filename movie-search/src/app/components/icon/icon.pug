@@ -15,7 +15,7 @@ mixin icon(link, id, width, height, mods)
     // modifiers list
     let allMods = '';
     if(typeof(mods) !== 'undefined' && mods) {
-      const modsList = mods.split(',');
+      let modsList = mods.split(',');
       for (let i = 0; i < modsList.length; i++) {
         allMods = allMods + ' icon--' + modsList[i].trim();
       }

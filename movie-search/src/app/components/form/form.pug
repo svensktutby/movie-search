@@ -1,0 +1,66 @@
+//- All mixins in this file should initiate with the name of the block (form)
+//- ATTENTION: there are two mixins in the file
+
+mixin form(mods)
+
+  //- Accept:
+  //-   mods    {string} - modifiers list
+  //- Invoke:
+        +form()
+          +fieldset('Title1')
+            +field-text({
+              helpText: 'Prompt',
+              attrs: {
+                placeholder: 'Example'
+              }
+            })
+            +field-text({
+              helpText: 'Prompt',
+              attrs: {
+                placeholder: 'Example'
+              }
+            })
+
+  -
+    // modifiers list
+    let allMods = '';
+    if(typeof(mods) !== 'undefined' && mods) {
+      let modsList = mods.split(',');
+      for (let i = 0; i < modsList.length; i++) {
+        allMods = allMods + ' form--' + modsList[i].trim();
+      }
+    }
+  .form-wrapper
+    form.form(class=allMods)&attributes(attributes)
+      block
+
+
+
+mixin fieldset(legend, mods)
+
+  //- Accept:
+  //-   legend  {string} - field group name
+  //-   mods    {string} - modifiers list
+  //- Invoke:
+        +fieldset('Title1')
+          +field-text({
+            helpText: 'Prompt',
+            attrs: {
+              placeholder: 'Example'
+            }
+          })
+
+  -
+    // modifiers list
+    let allMods = '';
+    if(typeof(mods) !== 'undefined' && mods) {
+      let modsList = mods.split(',');
+      for (let i = 0; i < modsList.length; i++) {
+        allMods = allMods + ' form__fieldset--' + modsList[i].trim();
+      }
+    }
+
+  fieldset.form__fieldset(class=allMods)&attributes(attributes)
+    if legend
+      legend.form__legend!= legend
+    block

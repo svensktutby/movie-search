@@ -4,6 +4,9 @@ include ../../app/components/page-footer/page-footer.pug
 include ../../app/components/social/social.pug
 include ../../app/components/icon/icon.pug
 include ../../app/components/preloader/preloader.pug
+include ../../app/components/form/form.pug
+include ../../app/components/field-text/field-text.pug
+include ../../app/components/btn/btn.pug
 
 block title
   | MovieSearch
@@ -23,6 +26,23 @@ block content
   main.page-main
     .container
       +preloader('page-main')
+      +form('search')(name='search-form')#search-form
+        .form__inner
+          +fieldset('', 'input')
+            +field-text({
+              attrs: {
+                id: 'form-input',
+                placeholder: 'Search movie'
+              }
+            })
+            +btn('', 'clear')(type='button')#form-clear
+              span.visually-hidden Clear text
+              +icon('assets/img/sprite.svg', 'sprite-cross', '32', '32', 'cross')
+          +btn('', 'keyboard use-keyboard-input')(type='button')
+            span.visually-hidden Show keyboard
+            +icon('assets/img/sprite.svg', 'sprite-keyboard', '36', '32', 'keyboard')
+          +fieldset('', 'submit')
+            +btn('Search', 'submit')(type='submit')#form-submit
       include ../../app/components/swiper/swiper.pug
 
 block footer

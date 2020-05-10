@@ -3,9 +3,14 @@ import '../styles/main.scss';
 import dataStore from './store/data-store';
 import { appendSlide } from './plugins/swiper';
 import Card from './components/card';
+import form from './components/form';
+import Keyboard from './components/keyboard';
 
 document.addEventListener('DOMContentLoaded', () => {
-  // init app
+  form.init();
+  // console.log(form);
+  Keyboard.init();
+
   (async () => {
     await dataStore.init('forest');
     const { movies } = dataStore;

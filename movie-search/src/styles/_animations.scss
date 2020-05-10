@@ -43,3 +43,9 @@
     transform: translateY(-2px);
   }
 }
+
+@keyframes back-pulse {
+  50% {
+    background-color: rgba(193, 193, 195, 0.5);
+  }
+}

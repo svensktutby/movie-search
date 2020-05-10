@@ -12,7 +12,7 @@ mixin preloader(mods, text)
     // modifiers list
     let allMods = '';
     if(typeof(mods) !== 'undefined' && mods) {
-      const modsList = mods.split(',');
+      let modsList = mods.split(',');
       for (let i = 0; i < modsList.length; i++) {
         allMods = allMods + ' preloader--' + modsList[i].trim();
       }
