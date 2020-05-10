@@ -7,8 +7,25 @@ class Api {
     this.apikey = apikey;
   }
 
-  async getMovies(title) {
-    const url = encodeURI(`${this.origin}?${this.apikey}&s=${title.trim()}`);
+  async getMoviesByQuery(query) {
+    const url = encodeURI(`${this.origin}?${this.apikey}&s=${query.trim()}`);
+
+    try {
+      return await loadJson(url);
+    } catch (err) {
+      if (err.response.status === 401) {
+        console.log('Error 401 - UNAUTHORIZED\n'
+          + 'The requested resource requires user authentication');
+      } else {
+        // unknown error
+        throw err;
+      }
+      return Promise.reject(err);
+    }
+  }
+
+  async getMovieById(imdbID) {
+    const url = encodeURI(`${this.origin}?${this.apikey}&i=${imdbID}`);
 
     try {
       return await loadJson(url);

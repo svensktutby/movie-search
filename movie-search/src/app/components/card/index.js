@@ -1,4 +1,3 @@
-import './card.scss';
 import template from './card.pug';
 
 export default class Card {

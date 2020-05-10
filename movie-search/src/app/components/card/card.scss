@@ -1,3 +1,139 @@
 .card {
   $block-name: &; // #{$block-name}__
+
+  text-align: center;
+
+  &__inner {
+    box-sizing: border-box;
+    max-width: 300px;
+    margin-right: auto;
+    margin-left: auto;
+
+    box-shadow: 0 5px 20px -10px #111;
+  }
+
+  &__title {
+    margin: 0;
+
+    font-size: $font-size;
+  }
+
+  &__link {
+    position: relative;
+
+    display: block;
+    padding: 15px 10px;
+    overflow: hidden;
+
+    color: inherit;
+    text-decoration: none;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+
+    background-color: $gray-darkest;
+    transform: perspective(1px) translateZ(0);
+
+    transition-duration: $transition-time;
+    transition-property: color, background-color;
+
+    &::before {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+
+      background-color: $white;
+      transform: scaleY(1);
+      transform-origin: 50%;
+
+      transition-timing-function: ease-out;
+      transition-duration: $transition-time;
+      transition-property: transform;
+    }
+
+    @media (hover: hover) {
+      &:hover,
+      &:focus {
+        color: $yellow;
+
+        &::before {
+          transform: scaleY(0);
+        }
+      }
+    }
+  }
+
+  &__img-wrapper {
+    position: relative;
+
+    width: 100%;
+    padding-top: 133%;
+    overflow: hidden;
+  }
+
+  &__img {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    display: block;
+  }
+
+  &__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 10px;
+
+    font-weight: 700;
+  }
+
+  &__rating-wrapper {
+    @include flex-center;
+  }
+
+  &__rating-star {
+    position: relative;
+
+    display: inline-block;
+    width: 0;
+    height: 0;
+    margin-right: 0.9em;
+    margin-bottom: 1.2em;
+    margin-left: 0.9em;
+
+    font-size: 10px; //Controlls the size of the stars.
+
+    border-right: 0.3em solid transparent;
+    border-bottom: 0.7em  solid $yellow;
+    border-left: 0.3em solid transparent;
+
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0.6em;
+      left: -1em;
+
+      display: block;
+      width: 0;
+      height: 0;
+
+      border-right: 1em solid transparent;
+      border-bottom: 0.7em  solid $yellow;
+      border-left: 1em solid transparent;
+      transform: rotate(-35deg);
+    }
+
+    &::after {
+      transform: rotate(35deg);
+    }
+  }
+
+  &__rating {
+    margin-left: 5px;
+  }
 }
