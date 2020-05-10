@@ -6,9 +6,9 @@ class DataStore {
     this.movies = null;
   }
 
-  async init(query) {
+  async init(query, page) {
     const response = await Promise.all([
-      this.apiService.getMoviesByQuery(query),
+      this.apiService.getMoviesByQuery(query, page),
     ]);
 
     const [movies] = response;

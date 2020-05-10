@@ -7,8 +7,8 @@ class Api {
     this.apikey = apikey;
   }
 
-  async getMoviesByQuery(query) {
-    const url = encodeURI(`${this.origin}?${this.apikey}&s=${query.trim()}`);
+  async getMoviesByQuery(query, page = 1) {
+    const url = encodeURI(`${this.origin}?${this.apikey}&page=${page}&s=${query.trim()}`);
 
     try {
       return await loadJson(url);

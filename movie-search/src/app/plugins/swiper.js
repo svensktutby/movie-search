@@ -1,7 +1,7 @@
 import 'swiper/css/swiper.css';
 import Swiper from 'swiper';
 
-const swiper = new Swiper('.swiper-container', {
+export const swiper = new Swiper('.swiper-container', {
   slidesPerView: 1,
   spaceBetween: 30,
   // loop: true,
@@ -43,4 +43,8 @@ export function appendSlide(slides) {
 
 export function addSlide(index, slides) {
   return swiper.addSlide(index, slides);
+}
+
+export function removeAllSlides() {
+  return swiper.removeAllSlides();
 }

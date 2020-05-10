@@ -35,9 +35,11 @@ const Keyboard = {
     // Automatically use keyboard for elements with .use-keyboard-input
     document.querySelectorAll('.use-keyboard-input').forEach((element) => {
       element.addEventListener('click', () => {
-        this.open(this.inputTarget.value, (currentValue) => {
-          this.inputTarget.value = currentValue;
-        });
+        if (this.inputTarget) {
+          this.open(this.inputTarget.value, (currentValue) => {
+            this.inputTarget.value = currentValue;
+          });
+        }
       });
     });
   },
