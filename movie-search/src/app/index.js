@@ -5,6 +5,7 @@ import {
   swiper,
   appendSlide,
   removeAllSlides,
+  lazyLoadSlides,
 } from './plugins/swiper';
 import Card from './components/card';
 import form from './components/form';
@@ -13,7 +14,7 @@ import Keyboard from './components/keyboard';
 document.addEventListener('DOMContentLoaded', () => {
   Keyboard.init();
   form.init('sunshine');
-  let queryValue = '';
+  let queryValue = form.inputValue;
   let pageValue = 1;
 
   async function renderSlides(query, page) {
@@ -21,17 +22,31 @@ document.addEventListener('DOMContentLoaded', () => {
     const { movies } = dataStore;
     const moviesNodeList = movies.map((item) => new Card(item).template);
     appendSlide(moviesNodeList);
+    lazyLoadSlides();
   }
 
   function formSubmitHandler() {
-    if (form.inputValue) {
-      queryValue = form.inputValue;
+    if (queryValue) {
       removeAllSlides();
       renderSlides(queryValue);
     }
   }
 
   (() => {
+    const keyboard = document.querySelector('.keyboard');
+    if (keyboard) {
+      keyboard.addEventListener('click', (evt) => {
+        evt.preventDefault();
+        const { target } = evt;
+        if (target.closest('.keyboard__key.keyboard__key--enter')) {
+          formSubmitHandler();
+        }
+        if (target.closest('.keyboard__key')) {
+          queryValue = form.inputValue;
+        }
+      });
+    }
+
     form.form.addEventListener('submit', (evt) => {
       evt.preventDefault();
       formSubmitHandler();
@@ -40,7 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
     form.clear.click();
 
     swiper.on('reachEnd', () => {
-      renderSlides(queryValue, pageValue++);
+      renderSlides(queryValue, ++pageValue);
     });
   })();
 });

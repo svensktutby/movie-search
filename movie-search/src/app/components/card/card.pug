@@ -2,17 +2,19 @@
   let title = Title;
   let year = Year;
   let link = `https://www.imdb.com/title/${imdbID}/videogallery/`;
-  let imgSrc = Poster;
-  if(Poster === 'N/A') {
-    imgSrc = require('../../../assets/img/noposter.jpg')
-  }
+  let rating = '';
+  let imgSrc = '';
+
+  Poster === 'N/A' ? imgSrc = require('../../../assets/img/noposter.jpg') : imgSrc = Poster;
+  Rating === 'N/A' ? rating = 'no rating' : rating = Rating;
 
 .card.swiper-slide
   .card__inner
     h2.card__title
       a.card__link(href=link, target='_blank')= title
     .card__img-wrapper
-      img.card__img(src=imgSrc, width='300', alt=`The movie titled: ${title}`)
+      img.card__img.swiper-lazy(data-src=imgSrc, src='#', width='300', alt=`The movie titled: ${title}`)
+    .swiper-lazy-preloader
     .card__footer
       .card__year= year
       .card__rating-wrapper

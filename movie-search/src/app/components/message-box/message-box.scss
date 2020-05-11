@@ -1,0 +1,11 @@
+.message-box {
+  $block-name: &; // #{$block-name}__
+
+  padding: 15px 5%;
+
+  text-align: center;
+
+  &__output {
+    color: $color-danger;
+  }
+}

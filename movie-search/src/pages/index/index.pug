@@ -26,6 +26,8 @@ block content
   main.page-main
     .container
       +preloader('page-main')
+      .message-box
+        span.message-box__output
       +form('search')(name='search-form')#search-form
         .form__inner
           +fieldset('', 'input')

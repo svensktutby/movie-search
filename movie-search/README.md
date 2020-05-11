@@ -1,3 +1,3 @@
 # MovieSearch
 
-**Demo** https://movie-search-rss.netlify.com/
+**Demo** https://svensktutby-movie-search.netlify.app/

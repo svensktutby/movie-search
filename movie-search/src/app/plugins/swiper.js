@@ -16,6 +16,9 @@ export const swiper = new Swiper('.swiper-container', {
     nextEl: '.swiper-button-next',
     prevEl: '.swiper-button-prev',
   },
+  lazy: {
+    loadPrevNext: true,
+  },
   breakpoints: {
     480: {
       slidesPerView: 1,
@@ -46,4 +49,8 @@ export function addSlide(index, slides) {
 
 export function removeAllSlides() {
   return swiper.removeAllSlides();
+}
+
+export function lazyLoadSlides() {
+  return swiper.lazy.load();
 }

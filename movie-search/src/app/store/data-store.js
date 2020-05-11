@@ -21,7 +21,7 @@ class DataStore {
     const promises = movies.map(async (movie) => {
       await this.apiService.getMovieById(movie.imdbID)
         // eslint-disable-next-line no-param-reassign,no-return-assign
-        .then((response) => movie.rating = response.imdbRating);
+        .then((response) => movie.Rating = response.imdbRating);
     });
     await Promise.all(promises);
 
