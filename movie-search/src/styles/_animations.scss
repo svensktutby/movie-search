@@ -49,3 +49,10 @@
     background-color: rgba(193, 193, 195, 0.5);
   }
 }
+
+@keyframes fadeout {
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}

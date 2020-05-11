@@ -12,9 +12,11 @@ block title
   | MovieSearch
 
 block head
+  style
+    include ../../app/components/preloader/preloader.css
 
 block svg-sprite
-  div#svg-sprite(style='display: none;')
+  //- div#svg-sprite(style='display: none;')
 
 block header
   +page-header()
@@ -25,9 +27,6 @@ block header
 block content
   main.page-main
     .container
-      +preloader('page-main')
-      .message-box
-        span.message-box__output
       +form('search')(name='search-form')#search-form
         .form__inner
           +fieldset('', 'input')
@@ -46,6 +45,8 @@ block content
             +icon('assets/img/sprite.svg', 'sprite-keyboard', '36', '32', 'keyboard')
           +fieldset('', 'submit')
             +btn('Search', 'submit')(type='submit')#form-submit
+      .message-box
+        span.message-box__output
       include ../../app/components/swiper/swiper.pug
 
 block footer
@@ -57,3 +58,5 @@ block footer
         +social('footer page-footer__social col col--lg-6')
           +social-link('https://github.com/svensktutby/', 'gh', 'svensktutby')
             +icon('assets/img/sprite.svg', 'sprite-github-logo', '24', '24', 'gh social__icon')
+block modal
+  +preloader('', 'Loading')

@@ -19,10 +19,11 @@ mixin preloader(mods, text)
     }
 
   .preloader(class=allMods)&attributes(attributes)
-    - let n = 3
-    - for (let i = 0; i < n; i++)
-      .preloader__circle
-    - for (let i = 0; i < n; i++)
-      .preloader__shadow
-    if text
-      span.preloader__text= text
+    .preloader__inner
+      - let n = 3
+      - for (let i = 0; i < n; i++)
+        .preloader__circle
+      - for (let i = 0; i < n; i++)
+        .preloader__shadow
+      if text
+        span.preloader__text= text

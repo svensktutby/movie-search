@@ -11,6 +11,11 @@ import Card from './components/card';
 import form from './components/form';
 import Keyboard from './components/keyboard';
 
+window.addEventListener('load', () => {
+  const preloader = document.querySelector('.preloader');
+  preloader.classList.add('preloader--hidden');
+});
+
 document.addEventListener('DOMContentLoaded', () => {
   Keyboard.init();
   form.init('sunshine');
