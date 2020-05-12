@@ -13,6 +13,10 @@
   transition: bottom 0.4s;
 
   user-select: none;
+
+  @media (max-width: $screen-md) {
+    display: none;
+  }
 }
 
 .keyboard--hidden {
@@ -51,23 +55,25 @@
 
   -webkit-tap-highlight-color: transparent;
 
-  &:focus {
-    outline: none;
-  }
+  @media (hover: hover) {
+    &:focus {
+      outline: none;
+    }
 
-  &:hover {
-    background-color: #c1c1c3;
+    &:hover {
+      background-color: #c1c1c3;
 
-    animation-name: back-pulse;
-    animation-duration: 1s;
-    animation-timing-function: linear;
-    animation-delay: 0.5s;
-    animation-iteration-count: infinite;
-  }
+      animation-name: back-pulse;
+      animation-duration: 1s;
+      animation-timing-function: linear;
+      animation-delay: 0.5s;
+      animation-iteration-count: infinite;
+    }
 
-  &:active {
-    background-color: rgba(255, 255, 255, 0.12);
-    box-shadow: 0 1px 1px #848789, 0 0 1px #848789;
+    &:active {
+      background-color: rgba(255, 255, 255, 0.12);
+      box-shadow: 0 1px 1px #848789, 0 0 1px #848789;
+    }
   }
 }
 

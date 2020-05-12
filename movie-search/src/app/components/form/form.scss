@@ -1,5 +1,5 @@
 .form-wrapper {
-  padding: 15px 5%;
+  padding: 40px 5% 15px;
 }
 
 .form {
@@ -153,29 +153,36 @@
         white-space: nowrap;
         text-overflow: ellipsis;
 
-        background-color: $gray-darkest;
-        transform: perspective(1px) translateZ(0);
+        background-color: $yellow;
 
         transition-duration: $transition-time;
         transition-property: color, background-color;
 
         // stylelint-disable-next-line
-        &::before {
+        &::after {
           content: "";
           position: absolute;
-          z-index: -1;
-          top: 0;
-          right: 0;
-          bottom: 0;
-          left: 0;
 
-          background-color: $yellow;
-          transform: scaleY(1);
-          transform-origin: 50%;
+          display: block;
+          margin-top: -120%;
+          margin-left: -20px !important; /* fix for active effect */
+          padding-top: 300%;
+          padding-left: 350%;
 
-          transition-timing-function: ease-out;
-          transition-duration: $transition-time;
-          transition-property: transform;
+          background-color: #ffdb95;
+          opacity: 0;
+
+          transition: margin 0.5s, padding 0.5s, opacity 0.5s;
+        }
+
+        // stylelint-disable-next-line
+        &:active::after {
+          margin: 0;
+          padding: 0;
+
+          opacity: 1;
+
+          transition: 0s;
         }
 
         @media (hover: hover) {
@@ -183,10 +190,9 @@
           &:hover,
           &:focus {
             color: $yellow;
-            // stylelint-disable-next-line
-            &::before {
-              transform: scaleY(0);
-            }
+
+            background-color: $gray-darkest;
+            box-shadow: none;;
           }
         }
 

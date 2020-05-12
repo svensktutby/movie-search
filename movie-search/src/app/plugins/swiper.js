@@ -40,17 +40,15 @@ export const swiper = new Swiper('.swiper-container', {
 });
 
 export function appendSlide(slides) {
-  return swiper.appendSlide(slides);
+  swiper.appendSlide(slides);
 }
 
-export function addSlide(index, slides) {
-  return swiper.addSlide(index, slides);
-}
-
-export function removeAllSlides() {
-  return swiper.removeAllSlides();
+export function clearSlides() {
+  const swiperWrapper = swiper.$el[0].children[0];
+  swiperWrapper.innerHTML = '';
+  swiper.update();
 }
 
 export function lazyLoadSlides() {
-  return swiper.lazy.load();
+  swiper.lazy.load();
 }
