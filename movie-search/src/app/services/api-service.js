@@ -13,13 +13,6 @@ class Api {
     try {
       return await loadJson(url);
     } catch (err) {
-      if (err.response.status === 401) {
-        console.log('Error 401 - UNAUTHORIZED\n'
-          + 'The requested resource requires user authentication');
-      } else {
-        // unknown error
-        throw err;
-      }
       return Promise.reject(err);
     }
   }
@@ -30,13 +23,6 @@ class Api {
     try {
       return await loadJson(url);
     } catch (err) {
-      if (err.response.status === 401) {
-        console.log('Error 401 - UNAUTHORIZED\n'
-          + 'The requested resource requires user authentication');
-      } else {
-        // unknown error
-        throw err;
-      }
       return Promise.reject(err);
     }
   }

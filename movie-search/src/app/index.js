@@ -16,22 +16,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const messageOutput = document.querySelector('.message-box__output');
 
   const initQuery = 'sunshine';
+  const queryValues = [];
   let queryValue = '';
   let currentPage = 1;
+  let queryData = null;
+  let queryQuantity = null;
   let pagesQuantity = null;
-
-  function addSlides(items) {
-    const nodeList = items.map((item) => new Card(item).template);
-    appendSlide(nodeList);
-    lazyLoadSlides();
-  }
-
-  async function renderSlides(query, page) {
-    await dataStore.init(query, page);
-    const { movies, quantity } = dataStore;
-    pagesQuantity = Math.ceil(quantity / 10);
-    addSlides(movies);
-  }
 
   function showMessage(str) {
     messageOutput.textContent = str;
@@ -44,15 +34,55 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  function renderSlides(items) {
+    const nodeList = items.map((item) => new Card(item).template);
+    appendSlide(nodeList);
+    lazyLoadSlides();
+  }
+
+  async function getData(query, page) {
+    await dataStore.init(query, page);
+    const { movies, quantity } = dataStore;
+    queryData = movies;
+    queryQuantity = quantity;
+    pagesQuantity = Math.ceil(quantity / 10);
+  }
+
+  async function addSlides(query, page) {
+    await getData(query, page);
+    renderSlides(queryData);
+  }
+
   function formSubmitHandler() {
     form.submitBtn.blur();
 
     if (form.inputValue) {
-      currentPage = 1;
       queryValue = form.inputValue;
-      showMessage('');
-      clearSlides();
-      renderSlides(queryValue);
+      queryValues.push(queryValue);
+
+      (async () => {
+        try {
+          await getData(queryValue, currentPage);
+          currentPage = 1;
+          showMessage(`${queryQuantity} results for "${queryValue}"`);
+          clearSlides();
+          renderSlides(queryData);
+        } catch (err) {
+          if (err.response && err.response.status === 401) {
+            const message = 'Error 401 - UNAUTHORIZED: '
+              + 'The requested resource requires user authentication';
+
+            showMessage(message);
+          } else if (err.message === 'No data') {
+            showMessage(`No results for "${queryValue}"`);
+            queryValues.pop();
+            queryValue = queryValues[queryValues.length - 1];
+          } else {
+            showMessage(err.message);
+            throw err; // unknown error
+          }
+        }
+      })();
     }
   }
 
@@ -86,7 +116,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       if (currentPage < pagesQuantity) {
-        renderSlides(queryValue, ++currentPage);
+        addSlides(queryValue, ++currentPage);
       }
     });
   })();

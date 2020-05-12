@@ -31,7 +31,7 @@ class DataStore {
       return movies;
     }
 
-    return Promise.reject(new Error());
+    return Promise.reject(new Error('No data'));
   }
 }
 

@@ -48,6 +48,15 @@ figure {
   margin-bottom: $typo-margin-vertical;
 }
 
+// stylelint-disable
+input[type=text],
+input[type=email],
+input[type=password],
+textarea {
+  -webkit-appearance: none; // fix safari inputs shadow
+}
+// stylelint-enable
+
 .link {
   position: relative;
 
