@@ -5,11 +5,15 @@ module.exports = function () {
     plugins: [
       new CopyPlugin([
         {
-          from: 'assets/audio/*',
-          to: './',
-          // to: '[1]-[2].[hash].[ext]',
-          test: /([^/]+)\/(.+)\.mp3$/,
+          from: 'assets/css/preloader.css',
+          to: './css/[name].[ext]',
         },
+        // {
+        //   from: 'assets/audio/*',
+        //   to: './',
+        //   // to: '[1]-[2].[hash].[ext]',
+        //   test: /([^/]+)\/(.+)\.mp3$/,
+        // },
       ]),
     ],
   };

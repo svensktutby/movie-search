@@ -112,7 +112,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     swiper.on('reachEnd', () => {
       if (currentPage === pagesQuantity) {
-        showMessage('There are no more results for this query');
+        showMessage(`There are no more results for "${queryValue}"`);
       }
 
       if (currentPage < pagesQuantity) {

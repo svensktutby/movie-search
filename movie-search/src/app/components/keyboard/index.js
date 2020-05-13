@@ -19,6 +19,7 @@ const Keyboard = {
     // Create main elements
     this.elements.main = document.createElement('div');
     this.elements.keysContainer = document.createElement('div');
+    this.escCloseHandler = this.escClose.bind(this);
 
     // Setup main elements
     this.elements.main.classList.add('keyboard', 'keyboard--hidden');
@@ -37,6 +38,8 @@ const Keyboard = {
     document.querySelectorAll('.use-keyboard-input').forEach((element) => {
       element.addEventListener('click', () => {
         if (this.inputTarget) {
+          window.addEventListener('keydown', this.escCloseHandler);
+          this.inputTarget.focus();
           this.open(this.inputTarget.value, (currentValue) => {
             this.inputTarget.value = currentValue;
           });
@@ -162,6 +165,16 @@ const Keyboard = {
           ? key.textContent.toUpperCase()
           : key.textContent.toLowerCase();
       }
+    }
+  },
+
+  escClose(evt) {
+    evt.preventDefault();
+
+    if (evt.key === 'Escape') {
+      this.close();
+      this.triggerEvent('onclose');
+      window.removeEventListener('keydown', this.escCloseHandler);
     }
   },
 
