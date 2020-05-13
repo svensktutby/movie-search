@@ -9,6 +9,7 @@ Thumbs.db
 .netlify/
 build/
 dist/
+environment.js
 
 # NodeJS
 node_modules/

@@ -5,6 +5,7 @@ mixin field-text(props)
   //- Accept:
   //-   props {
   //-     title: ''         {string} - text with a title (showed above the field)
+  //-     titleHidden: ''   {bool}   - flag for visually-hidden class
   //-     isTextarea: false {bool}   - flag input/textarea
   //-     helpText: ''      {string} - explanation below the field
   //-     mods: ''          {string} - modifiers list
@@ -15,6 +16,7 @@ mixin field-text(props)
   //- Invoke:
         +field-text({
           title: 'Title',
+          titleHidden: true,
           isTextarea: true,
           helpText: 'Prompt',
           mods: '',
@@ -38,7 +40,10 @@ mixin field-text(props)
 
   label.field-text(class=allMods)&attributes(attributes)
     if(typeof(props.title) !== 'undefined' && props.title)
-      span.field-text__name!= props.title
+      if(props.titleHidden)
+        span.field-text__name.visually-hidden!= props.title
+      else
+        span.field-text__name!= props.title
     span.field-text__input-wrap
       if(typeof(props.isTextarea) !== 'undefined' && props.isTextarea)
         textarea.field-text__input&attributes(props.attrs)= props.val

@@ -14,17 +14,17 @@ class DataStore {
 
     const [movies] = response;
     this.quantity = movies.totalResults;
-    this.movies = await this.addRating(movies.Search);
+    this.movies = await this.getMoviesWithRating(movies.Search);
 
     return response;
   }
 
-  async addRating(movies) {
+  async getMoviesWithRating(movies) {
     if (movies) {
       const promises = movies.map(async (movie) => {
-        await this.apiService.getMovieById(movie.imdbID)
-          // eslint-disable-next-line no-param-reassign,no-return-assign
-          .then((response) => movie.Rating = response.imdbRating);
+        const response = await this.apiService.getMovieById(movie.imdbID);
+        // eslint-disable-next-line no-param-reassign
+        movie.Rating = response.imdbRating;
       });
       await Promise.all(promises);
 

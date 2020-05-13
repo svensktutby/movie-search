@@ -14,14 +14,27 @@ import Keyboard from './components/keyboard';
 document.addEventListener('DOMContentLoaded', () => {
   const preloader = document.querySelector('.preloader');
   const messageOutput = document.querySelector('.message-box__output');
+  const options = {
+    initQuery: 'sunshine',
+    queryValues: [],
+    queryValue: '',
+    currentPage: 1,
+    queryData: null,
+    queryQuantity: null,
+    pagesQuantity: null,
+  };
 
-  const initQuery = 'sunshine';
-  const queryValues = [];
-  let queryValue = '';
-  let currentPage = 1;
-  let queryData = null;
-  let queryQuantity = null;
-  let pagesQuantity = null;
+  let {
+    // eslint-disable-next-line prefer-const
+    initQuery,
+    // eslint-disable-next-line prefer-const
+    queryValues,
+    queryValue,
+    currentPage,
+    queryData,
+    queryQuantity,
+    pagesQuantity,
+  } = options;
 
   function showMessage(str) {
     messageOutput.textContent = str;
@@ -38,6 +51,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const nodeList = items.map((item) => new Card(item).template);
     appendSlide(nodeList);
     lazyLoadSlides();
+  }
+
+  function showPreloaderTransparent(time = 600) {
+    preloader.classList.add('preloader--transparent');
+    preloader.classList.remove('preloader--hidden');
+    setTimeout(() => {
+      preloader.classList.add('preloader--hidden');
+      preloader.classList.remove('preloader--transparent');
+    }, time);
   }
 
   async function getData(query, page) {
@@ -117,6 +139,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (currentPage < pagesQuantity) {
         addSlides(queryValue, ++currentPage);
+        showPreloaderTransparent(1000);
       }
     });
   })();

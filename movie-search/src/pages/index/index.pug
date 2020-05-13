@@ -30,9 +30,12 @@ block content
         .form__inner
           +fieldset('', 'input')
             +field-text({
+              title: 'Search movie',
+              titleHidden: true,
               attrs: {
                 id: 'form-input',
                 autocomplete: 'off',
+                minlength: 2,
                 placeholder: 'Search movie'
               }
             })
