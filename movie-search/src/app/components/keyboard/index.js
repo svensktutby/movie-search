@@ -173,8 +173,6 @@ const Keyboard = {
   },
 
   escClose(evt) {
-    evt.preventDefault();
-
     if (evt.key === 'Escape') {
       this.close();
       this.triggerEvent('onclose');
