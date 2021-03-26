@@ -20,7 +20,3 @@ package-lock.json
 *.log
 *.pdf
 *.psd
-
-# Other Projects
-english-for-kids/
-fancy-weather/
